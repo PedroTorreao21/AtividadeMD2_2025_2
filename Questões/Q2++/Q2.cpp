@@ -44,10 +44,12 @@ int mmc_verbose(int a, int b)
 int main()
 {
   std::ios::sync_with_stdio(false);
-  std::cin.tie(nullptr);
+  // std::cin.tie(nullptr); // REMOVE ESTA LINHA
 
   std::cout << " SINCRONIZACAO DE CICLOS (MMC) \n";
-  std::cout << "1.1. Digite o numero de ciclos - N, max 50:\n";
+  
+  // Print 1.1 antes do primeiro input
+  std::cout << "1.1. Digite o numero de ciclos - N, max 50:\n" << std::flush;
   int N;
   if (!(std::cin >> N) || N < 1 || N > 50)
   {
@@ -55,7 +57,8 @@ int main()
     return 0;
   }
 
-  std::cout << "1.2. Digite os " << N << " periodos - C[i], cada um max 50:\n";
+  // Print 1.2 antes do segundo input
+  std::cout << "1.2. Digite os " << N << " periodos - C[i], cada um max 50:\n" << std::flush;
   std::vector<int> C(N);
   for (int i = 0; i < N; ++i)
   {
