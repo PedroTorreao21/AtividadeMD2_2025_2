@@ -33,11 +33,11 @@ void print_sep(const string &title)
 int main()
 {
   ios::sync_with_stdio(false);
-  cin.tie(nullptr);
+  // cin.tie(nullptr); // REMOVE ESTA LINHA
 
   print_sep("1. Entrada e Validacao");
   long long N;
-  cout << "1.1. Digite o numero N (maximo 9 digitos para seguranca de long long):\n";
+  cout << "1.1. Digite o numero N (maximo 9 digitos para seguranca de long long):\n" << flush;
   if (!(cin >> N))
     return 0;
 
