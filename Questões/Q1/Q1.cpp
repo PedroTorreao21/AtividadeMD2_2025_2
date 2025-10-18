@@ -93,7 +93,7 @@ long long pollard_rho_verbose(long long N) {
         }
     }
     if (d == N) { cout << "4.4. Falha: mdc=N - Ciclo degenerado\n"; return -1; }
-    if (d == 1)  { cout << "4.4. Sem fator - Loop quebrou por limite\n"; return -1; }
+    if (d == 1) { cout << "4.4. Sem fator - Loop quebrou por limite\n"; return -1; }
     cout << "4.5. Fator encontrado: " << d << "\n";
     return d;
 }
