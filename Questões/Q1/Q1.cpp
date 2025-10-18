@@ -16,7 +16,7 @@ long long mdc_verbose(long long a, long long b) {
     while (b != 0) {
         long long q = a / b;
         long long r = a % b;
-        cout << "  " << a << " = " << b << " * " << q << " + " << r << " - Divisao Euclidiana\n";
+        cout << "  " << a << " = " << b << " * " << q << " + " << r << " - Divisao Euclidiana\n";
         a = b; b = r;
     }
     cout << "mdc = " << a << "\n";
@@ -29,13 +29,13 @@ long long extgcd_verbose(long long a, long long b, long long &x, long long &y) {
     long long old_s = 1, s = 0;
     long long old_t = 0, t = 1;
 
-    cout << "  q\tr\told_r\ts\told_s\tt\told_t\n";
+    cout << "  q\tr\told_r\ts\told_s\tt\told_t\n";
     int iter = 0;
     while (r != 0) {
         long long q = old_r / r;
         long long tmp;
 
-        cout << "  " << q << "\t" << r << "\t" << old_r << "\t" << s << "\t" << old_s << "\t" << t << "\t" << old_t << " (Iter " << (++iter) << ")\n";
+        cout << "  " << q << "\t" << r << "\t" << old_r << "\t" << s << "\t" << old_s << "\t" << t << "\t" << old_t << " (Iter " << (++iter) << ")\n";
 
         tmp = old_r - q * r; old_r = r; r = tmp;
         tmp = old_s - q * s; old_s = s; s = tmp;
@@ -134,11 +134,11 @@ PowResult powmod_verbose(long long m, long long k, long long mod, long long phi_
     while (e > 0) {
         cout << "passo " << (++step) << ": e=" << e << ", bit=" << (e & 1) << " - Analise do bit menos significativo \n";
         if (e & 1) {
-            cout << "  (Bit=1) res=(" << res << " * " << base << ")% " << mod << " = ";
+            cout << "  (Bit=1) res=(" << res << " * " << base << ")% " << mod << " = ";
             res = mul_mod(res, base, mod);
             cout << res << "\n";
         }
-        cout << "  (Square) base=(" << base << " * " << base << ")% " << mod << " = ";
+        cout << "  (Square) base=(" << base << " * " << base << ")% " << mod << " = ";
         base = mul_mod(base, base, mod);
         cout << base << "\n";
         e >>= 1;
@@ -149,13 +149,13 @@ PowResult powmod_verbose(long long m, long long k, long long mod, long long phi_
 
 int char_to_code(char c) {
     if (c == ' ') return 0;
-    if ('A' <= c && c <= 'Z') return 11 + (c - 'A');
+    if ('A' <= c && c <= 'Z') return 11 + (c - 'A');  // Mantido: A=11, B=12, ..., Z=36
     return -1;
 }
 
 char code_to_char(int code) {
     if (code == 0) return ' ';
-    if (11 <= code && code <= 36) return char('A' + (code - 11));
+    if (11 <= code && code <= 36) return char('A' + (code - 11));  // Mantido: 11=A, 12=B, ..., 36=Z
     return '?';
 }
 
@@ -168,9 +168,9 @@ vector<int> encode_message(const string &msg) {
         int code = char_to_code(u);
         if (code >= 0) {
             v.push_back(code);
-            cout << "  " << (step++) << ". '" << c << "' -> " << setw(2) << setfill('0') << code << "\n";
+            cout << "  " << (step++) << ". '" << c << "' -> " << setw(2) << setfill('0') << code << "\n";
         } else {
-            cout << "  Ignorado: '" << c << "' (nao e letra/espaco)\n";
+            cout << "  Ignorado: '" << c << "' (nao e letra/espaco)\n";
         }
     }
     return v;
@@ -181,22 +181,22 @@ string decode_message(const vector<int> &codes) {
     string s;
     int step = 1;
     for (int code : codes) {
-        cout << "  " << (step++) << ". " << setw(2) << setfill('0') << code << " -> '" << code_to_char(code) << "'\n";
-        s.push_back(code_to_char(code));
+        char decoded_char = code_to_char(code);
+        cout << "  " << (step++) << ". " << setw(2) << setfill('0') << code << " -> '" << decoded_char << "'\n";
+        s.push_back(decoded_char);
     }
     return s;
 }
 
 int main() {
     ios::sync_with_stdio(false);
-    //cin.tie(nullptr);
 
     print_sep("0. Criptografia RSA - Inicializacao");
     cout << "0.1. Validacao de Entrada - N1 e N2 de 3 a 4 digitos.\n";
     long long N1, N2;
-    cout << "N1 [100..9999]: ";
+    cout << "N1 [100..9999]: " << flush;
     if (!(cin >> N1)) return 0;
-    cout << "N2 [100..9999]: ";
+    cout << "N2 [100..9999]: " << flush;
     if (!(cin >> N2)) return 0;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
@@ -224,8 +224,8 @@ int main() {
     if (!is_prime_bruteforce(q)) swap(q, p2);
 
     cout << "\n1.4. Primos RSA Selecionados (p, q):\n";
-    cout << "  p=" << p << "\n";
-    cout << "  q=" << q << "\n";
+    cout << "  p=" << p << "\n";
+    cout << "  q=" << q << "\n";
 
     print_sep("2. Geracao das Chaves RSA");
     long long n = p * q;
@@ -248,11 +248,11 @@ int main() {
     }
 
     cout << "\n2.6. Chaves Finais:\n";
-    cout << "  Chave Publica: (n,e)=(" << n << "," << E << ")\n";
-    cout << "  Chave Privada: (n,d)=(" << n << "," << D << ")\n";
+    cout << "  Chave Publica: (n,e)=(" << n << "," << E << ")\n";
+    cout << "  Chave Privada: (n,d)=(" << n << "," << D << ")\n";
 
     print_sep("3. Criptografia e Decriptografia RSA");
-    cout << "3.1. Digite a mensagem - letras A-Z e espaco:\n";
+    cout << "3.1. Digite a mensagem - letras A-Z e espaco:\n" << flush;
     string msg;
     getline(cin, msg);
 
@@ -281,9 +281,10 @@ int main() {
         long long M = r.value;
         cout << "Texto Plano M=" << M << " - Resultado mod n\n";
 
-        if (M < 0 || M > 99) {
-            cout << "Ajuste mod 100 - Requisito de Decodificacao-\n";
-            M = ((M % 100) + 100) % 100;
+        // Ajuste para garantir que está no intervalo correto (0-36)
+        if (M < 0 || M > 36) {
+            cout << "Ajuste mod 37 - Requisito de Decodificacao (0-36)\n";
+            M = ((M % 37) + 37) % 37;
         }
         recovered_codes.push_back((int)M);
     }
@@ -300,7 +301,7 @@ int main() {
     print_sep("4. Integridade e Confirmacao");
     cout << "4.1. Comparacao com a mensagem original  - normalizada apenas letras e espacos:\n";
     cout << "Original Normalizada: \"" << norm << "\"\n";
-    cout << "Decifrada:          \"" << recovered << "\"\n";
+    cout << "Decifrada:           \"" << recovered << "\"\n";
 
     if (norm == recovered) {
         cout << "4.2. CONFIRMACAO Mensagem decifrada coincide com a original.\n";
