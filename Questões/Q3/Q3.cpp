@@ -36,13 +36,13 @@ int main()
 
   print_sep("1. Entrada e Validacao");
   long long N;
-  cout << "1.1. Digite o numero N (maximo 9 digitos para seguranca de long long):\n" << flush;
+  cout << "1. Digite o numero N:\n" << flush;
   if (!(cin >> N))
     return 0;
 
-  if (N < 2 || N > 1000000000)
+  if (N < 1 || N > 105)
   {
-    cout << "1.2. Erro: N deve estar entre 2 e 1.000.000.000.\n";
+    cout << "1.2. Erro: N deve estar entre 1 e 105.\n";
     return 0;
   }
 
