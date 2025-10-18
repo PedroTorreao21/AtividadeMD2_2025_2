@@ -189,7 +189,7 @@ string decode_message(const vector<int> &codes) {
 
 int main() {
     ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+    //cin.tie(nullptr);
 
     print_sep("0. Criptografia RSA - Inicializacao");
     cout << "0.1. Validacao de Entrada - N1 e N2 de 3 a 4 digitos.\n";
