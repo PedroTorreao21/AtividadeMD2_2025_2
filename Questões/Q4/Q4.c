@@ -4,23 +4,23 @@
 #include <windows.h>
 #endif
 
-
 int mdcComPassos(int a, int b){
     int resto;
-    while ([1] != 0){
+    while (b != 0){
         resto = a % b;
         printf("Algoritmo de Euclides: %d mod %d = %d \n", a, b, resto);
         a = b;
-        b = [2];
+        b = resto;
     }
     return a;
 }
+
 int inversoModular(int a, int m){
     int m0 = m, t, q;
     int x0 = 0, x1 = 1;
-    int A = a, int B = m;
+    int A = a, B = m;
 
-    [3](a, m);
+    printf("MDC(%d, %d) = %d\n", a, m, mdcComPassos(a, m));
 
     while(m != 0) {
         q = a/m;
@@ -33,16 +33,16 @@ int inversoModular(int a, int m){
         x1 = t;
     }
     if (x1 < 0)
-        [4] += m0;
+        x1 += m0;
     printf("\nSubstituindo, temos que o inverso de %d em %d é %d.\n\n", A, B, x1);
     return x1;
 }
 
 int powMod(int base, int exp, int mod){
     long long res = 1;
-    long long base = b % mod;
+    long long b = base % mod;
     while(exp > 0){
-        if([5])
+        if(exp & 1)
             res = (res * b) % mod;
         b = (b * b) % mod;
         exp >>= 1;
@@ -69,13 +69,13 @@ int main(){
     scanf("%d", &n1);
     printf("\n");
 
-    int inverso = [6](G, Zn);
+    int inverso = inversoModular(G, Zn);
     int a = (H * inverso) % Zn;
 
     printf("Fazendo a multiplicação modular: %d * %d mod %d cong %d\n", H, inverso, Zn, a);
     printf("Sendo %d o inverso de %d\n", inverso, G);
 
-    int resultado = [7](a, x, n1);
+    int resultado = powMod(a, x, n1);
     printf("Valor final da congruencia: %d\n", resultado);
 
     return 0;
