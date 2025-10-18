@@ -44,12 +44,10 @@ int mmc_verbose(int a, int b)
 int main()
 {
   std::ios::sync_with_stdio(false);
-  // std::cin.tie(nullptr); // REMOVE ESTA LINHA
 
   std::cout << " SINCRONIZACAO DE CICLOS (MMC) \n";
   
-  // Print 1.1 antes do primeiro input
-  std::cout << "1.1. Digite o numero de ciclos - N, max 50:\n" << std::flush;
+  std::cout << "1. Digite o numero de ciclos - N, max 50:\n" << std::flush;
   int N;
   if (!(std::cin >> N) || N < 1 || N > 50)
   {
@@ -57,8 +55,7 @@ int main()
     return 0;
   }
 
-  // Print 1.2 antes do segundo input
-  std::cout << "1.2. Digite os " << N << " periodos - C[i], cada um max 50:\n" << std::flush;
+  std::cout << "2. Digite os " << N << " periodos - C[i], cada um max 50:\n" << std::flush;
   std::vector<int> C(N);
   for (int i = 0; i < N; ++i)
   {
@@ -85,7 +82,7 @@ int main()
 
     if (l > 50)
     {
-      std::cout << "2.3. Parada antecipada: MMC (" << l << ") excedeu o limite de 50.\n";
+      std::cout << "Parada antecipada: MMC (" << l << ") excedeu o limite de 50.\n";
       break;
     }
     std::cout << " Resultado parcial L_" << i << " = " << l << "\n";
@@ -94,12 +91,12 @@ int main()
   std::cout << "\n 3. RESULTADO FINAL \n";
   if (l >= 1 && l <= 50)
   {
-    std::cout << "3.1. Sincronizacao possivel. O periodo e:\n";
+    std::cout << "Sincronizacao possivel. O periodo e:\n";
     std::cout << l << "\n";
   }
   else
   {
-    std::cout << "3.1. Nao e possivel sincronizar no intervalo [1, 50].\n";
+    std::cout << "Nao e possivel sincronizar no intervalo [1, 50].\n";
   }
 
   return 0;

@@ -33,7 +33,6 @@ void print_sep(const string &title)
 int main()
 {
   ios::sync_with_stdio(false);
-  // cin.tie(nullptr); // REMOVE ESTA LINHA
 
   print_sep("1. Entrada e Validacao");
   long long N;
